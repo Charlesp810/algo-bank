@@ -78,3 +78,27 @@ function findClosestValueInBst(tree, target) {
   }
   return closest
 }
+
+/*Branch Sums Time: O(n) Space: O(n) where n is the number of nodes */
+function branchSums(root) {
+  let res = []
+
+  function traverse(node, sum) {
+    sum += node.value
+    if (!node.left && !node.right) {
+      res.push(sum)
+    }
+    if (node.left) {
+      traverse(node.left, sum)
+    }
+
+    if (node.right) {
+      traverse(node.right, sum)
+    }
+
+  }
+
+  traverse(root, 0)
+
+  return res
+}
