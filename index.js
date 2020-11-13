@@ -28,3 +28,53 @@ function isValidSubsequence(array, sequence) {
   }
   return j === sequence.length
 }
+
+/*Find closest Value in BST Time: O(n) Space: O(n) */
+function findClosestValueInBst(tree, target) {
+  let memo = {}
+
+  let queue = [tree]
+
+  while (queue.length > 0) {
+    let currNode = queue.shift()
+    let diff = Math.abs(currNode.value - target)
+    if (!memo[currNode.value]) {
+      memo[currNode.value] = diff
+    }
+    if (currNode.left) {
+      queue.push(currNode.left)
+    }
+    if (currNode.right) {
+      queue.push(currNode.right)
+    }
+  }
+  let checker = Infinity
+  let closest = 0
+
+  for (let key in memo) {
+    if (memo[key] < checker) {
+      checker = memo[key]
+      closest = key
+    }
+  }
+  return +closest
+}
+
+/*Find closest Value in BST Time: O(log(n)) Space: O(1) */
+function findClosestValueInBst(tree, target) {
+  let closest = tree.value
+  let currNode = tree
+  while (currNode != null) {
+    if (Math.abs(target - closest) > Math.abs(target - currNode.value)) {
+      closest = currNode.value
+    }
+    if (target < currNode.value) {
+      currNode = currNode.left
+    } else if (target > currNode.value) {
+      currNode = currNode.right
+    } else {
+      break
+    }
+  }
+  return closest
+}
