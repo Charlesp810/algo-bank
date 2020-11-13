@@ -1,4 +1,4 @@
-/* Time: O (nlog(n)) Space: O(1) */
+/*Two Sum Time: O (nlog(n)) Space: O(1) */
 function twoNumberSum(array, targetSum) {
   array.sort((a, b) => a - b)
 
@@ -16,4 +16,15 @@ function twoNumberSum(array, targetSum) {
     }
   }
   return []
+}
+
+/*Validate Subsequence Time: O(n) Space: O(1)*/
+function isValidSubsequence(array, sequence) {
+  let j = 0
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === sequence[j]) {
+      j++
+    }
+  }
+  return j === sequence.length
 }
