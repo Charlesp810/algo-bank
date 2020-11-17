@@ -126,3 +126,27 @@ function nodeDepths(root, depth = 0) {
   if (root === null) return 0;
   return depth + nodeDepths(root.left, depth + 1) + nodeDepths(root.right, depth + 1)
 }
+
+/*Depth First Search (write a method) Time: O(v + e). Space: O(e) where v is the number of vertices and e is the number of edges */
+class Node {
+  constructor(name) {
+    this.name = name;
+    this.children = [];
+  }
+
+  addChild(name) {
+    this.children.push(new Node(name));
+    return this;
+  }
+
+  depthFirstSearch(array) {
+    array.push(this.name)
+    if (this.children) {
+      for (let i = 0; i < this.children.length; i++) {
+        this.children[i].depthFirstSearch(array)
+      }
+    }
+
+    return array
+  }
+}
