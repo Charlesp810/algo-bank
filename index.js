@@ -102,3 +102,27 @@ function branchSums(root) {
 
   return res
 }
+
+
+/*Node Depth (itirative) Time: O(n) where n is the number of nodes. Space: o(h) where h is the height of the tree  */
+function nodeDepths(root) {
+  let resultSum = 0
+
+  let stack = [{ node: root, depth: 0 }]
+
+  while (stack.length > 0) {
+    let { node, depth } = stack.pop()
+    if (node === null) continue
+    resultSum += depth
+    stack.push({ node: node.left, depth: depth + 1 })
+    stack.push({ node: node.right, depth: depth + 1 })
+
+  }
+  return resultSum
+}
+
+/*Node Depth (recursion) Time: O(n) where n is the number of nodes. Space: o(h) where h is the height of the tree  */
+function nodeDepths(root, depth = 0) {
+  if (root === null) return 0;
+  return depth + nodeDepths(root.left, depth + 1) + nodeDepths(root.right, depth + 1)
+}
