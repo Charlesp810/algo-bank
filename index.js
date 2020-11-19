@@ -161,3 +161,44 @@ function getNthFib(n) {
     return memo[n]
   }
 }
+
+/*productSum  Time: O(n) Space: O(d) where n is the num of elems in the array, d is the num or nested arrays*/
+function productSum(array, depth = 1) {
+  let sum = 0
+  for (let i = 0; i < array.length; i++) {
+    if (Array.isArray(array[i])) {
+      sum += productSum(array[i], depth + 1)
+    } else {
+      sum += array[i]
+    }
+  }
+  return sum * depth
+}
+
+/* findThreeLarestNumbers Time: O(n) Space O(1)*/
+function findThreeLargestNumbers(array) {
+  let res = []
+  let max = -Infinity
+  let idx = 0
+  let smallest = Infinity
+
+  while (res.length < 3) {
+    for (let i = 0; i < array.length; i++) {
+      let curr = array[i]
+      if (max < curr) {
+        max = curr
+        idx = i
+      }
+      if (smallest > curr) {
+        smallest = curr
+      }
+    }
+    array[idx] = -Infinity
+    idx = 0
+    res.push(max)
+    max = smallest
+  }
+
+
+  return res.sort((a, b) => a - b)
+}
