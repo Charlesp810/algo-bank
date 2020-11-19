@@ -202,3 +202,19 @@ function findThreeLargestNumbers(array) {
 
   return res.sort((a, b) => a - b)
 }
+
+/*bubbleSort Time: O(n^2) Space: O(1) */
+function bubbleSort(array) {
+
+  for (let i = 0; i < array.length; i++) {
+    for (let j = i + 1; j < array.length; j++) {
+      let curr = array[i]
+      let next = array[j]
+      if (curr > next) {
+        array[i] = next
+        array[j] = curr
+      }
+    }
+  }
+  return array
+}
