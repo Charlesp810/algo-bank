@@ -218,3 +218,18 @@ function bubbleSort(array) {
   }
   return array
 }
+
+/*isPalindrome Time: O(n) Space: O(1) */
+function isPalindrome(string) {
+  let left = 0
+  let right = string.length - 1
+
+  while (left !== right && left < right) {
+    if (string[left] !== string[right]) {
+      return false
+    }
+    left++
+    right--
+  }
+  return true
+}
