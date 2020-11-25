@@ -233,3 +233,22 @@ function isPalindrome(string) {
   }
   return true
 }
+
+/*binarySearch Time: O(log(n)) Space: O(1) */
+function binarySearch(array, target) {
+  return search(array, target, 0, array.length - 1)
+}
+
+function search(array, target, left, right) {
+  while (left <= right) {
+    const pivot = Math.floor((left + right) / 2)
+    if (array[pivot] === target) {
+      return pivot
+    } else if (target < array[pivot]) {
+      right = pivot - 1
+    } else {
+      left = pivot + 1
+    }
+  }
+  return - 1
+}
