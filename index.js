@@ -252,3 +252,29 @@ function search(array, target, left, right) {
   }
   return - 1
 }
+
+/*threeNumberSum Time:O(n^2) Space: O(n) where n is the number of elems */
+function threeNumberSum(array, targetSum) {
+  array = array.sort((a, b) => a - b)
+
+  let res = []
+
+  for (let i = 0; i < array.length; i++) {
+    let curr = array[i]
+    let left = i + 1
+    let right = array.length - 1
+
+    while (left < right) {
+      if ((curr + array[left] + array[right]) === targetSum) {
+        res.push([curr, array[left], array[right]])
+        left++
+        right--
+      } else if ((curr + array[left] + array[right]) < targetSum) {
+        left++
+      } else {
+        right--
+      }
+    }
+  }
+  return res
+}
