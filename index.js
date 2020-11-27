@@ -278,3 +278,35 @@ function threeNumberSum(array, targetSum) {
   }
   return res
 }
+
+/*smallestDifference Time:O(nlong(n)) + O(mlog(m)) Space:O(1) where n is the # elems in arrayOne and m is the # elems in arrayTwo */
+function smallestDifference(arrayOne, arrayTwo) {
+  arrayOne = arrayOne.sort((a, b) => a - b)
+  arrayTwo = arrayTwo.sort((a, b) => a - b)
+
+  let p1 = 0
+  let p2 = 0
+  let smallestDiff = Infinity
+  let smallestPair = []
+  let diff
+
+  while (p1 < arrayOne.length && p2 < arrayTwo.length) {
+    let firstNum = arrayOne[p1]
+    let secondNum = arrayTwo[p2]
+    if (firstNum < secondNum) {
+      diff = secondNum - firstNum
+      p1++
+    } else if (secondNum < firstNum) {
+      diff = firstNum - secondNum
+      p2++
+    } else {
+      return [firstNum, secondNum]
+    }
+    if (smallestDiff > diff) {
+      smallestDiff = diff
+      smallestPair = [firstNum, secondNum]
+    }
+
+  }
+  return smallestPair
+}
