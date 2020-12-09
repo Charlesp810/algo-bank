@@ -311,4 +311,24 @@ function smallestDifference(arrayOne, arrayTwo) {
   return smallestPair
 }
 
-/* testing!!*/
+
+/*moveElementToEnd Time: O(n) Space:O(1) */
+function moveElementToEnd(array, toMove) {
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === toMove) {
+      let j = i + 1
+
+      while (j < array.length) {
+        if (array[j] !== toMove) {
+          let temp = array[i]
+          array[i] = array[j]
+          array[j] = temp
+          break
+        } else {
+          j++
+        }
+      }
+    }
+  }
+  return array
+}
