@@ -332,3 +332,29 @@ function moveElementToEnd(array, toMove) {
   }
   return array
 }
+
+/*isMonotonic Space: O(n) Time: O(1)*/
+function isMonotonic(array) {
+  let dec = false
+  let inc = false
+  let compare = array[0]
+
+  for (let i = 1; i < array.length; i++) {
+    let curr = array[i]
+    if (compare < curr) {
+      dec = true
+      compare = array[i]
+    } else if (compare > curr) {
+      inc = true
+      compare = array[i]
+    } else {
+      compare = array[i]
+    }
+  }
+
+  if (dec && inc) {
+    return false
+  } else {
+    return true
+  }
+}
