@@ -394,3 +394,22 @@ function spiralTraverse(array) {
 
   return result
 }
+
+/*minimumWaitingTime Time: O(n) Space: O(n) where n is the # of queries */
+function minimumWaitingTime(queries) {
+  queries = queries.sort((a, b) => a - b)
+  let minWaitTime = 0
+  let currTime = 0
+  let waitTime = []
+
+  for (let i = 0; i < queries.length - 1; i++) {
+    currTime += queries[i]
+    waitTime.push(currTime)
+  }
+
+  waitTime.forEach((elem) => {
+    minWaitTime += elem
+  })
+
+  return minWaitTime;
+}
