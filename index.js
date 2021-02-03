@@ -413,3 +413,24 @@ function minimumWaitingTime(queries) {
 
   return minWaitTime;
 }
+
+/*caesarCipherEncryptor Time: O(n) Space: O(n) */
+function caesarCipherEncryptor(string, key) {
+  const alpha = 'abcdefghijklmnopqrstuvwxyz'
+
+  let str = ''
+
+  for (let i = 0; i < string.length; i++) {
+    let count = 0
+    let currIdx = alpha.indexOf(string[i])
+    while (count != key) {
+      currIdx++
+      if (currIdx > 25) {
+        currIdx = 0
+      }
+      count++
+    }
+    str += alpha[currIdx]
+  }
+  return str
+}
