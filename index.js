@@ -434,3 +434,16 @@ function caesarCipherEncryptor(string, key) {
   }
   return str
 }
+
+/* removeDuplicatesFromLinkedList Time O(n) Space: O(1) */
+function removeDuplicatesFromLinkedList(linkedList) {
+  let currNode = linkedList
+
+  while (currNode) {
+    while (currNode.next && currNode.value === currNode.next.value) {
+      currNode.next = (currNode.next.next ? currNode.next.next : null)
+    }
+    currNode = currNode.next
+  }
+  return linkedList;
+}
