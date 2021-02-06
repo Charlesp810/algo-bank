@@ -481,3 +481,28 @@ function selectionSort(array) {
   }
   return array
 }
+
+/*firstDuplicateValue Time: O(n) Space: O(n) */
+function firstDuplicateValue(array) {
+  let obj = {}
+  for (let i = 0; i < array.length; i++) {
+    if (!obj[array[i]]) {
+      obj[array[i]] = 1
+    } else {
+      return array[i]
+    }
+  }
+  return -1;
+}
+
+/*firstDuplicateValue Time: O(n) Space: O(1) MORE OPTIMAL */
+function firstDuplicateValue(array) {
+  for (const value of array) {
+    const absVal = Math.abs(value)
+    if (array[absVal - 1] < 0) {
+      return absVal
+    }
+    array[absVal - 1] *= -1
+  }
+  return -1;
+}
