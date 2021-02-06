@@ -461,3 +461,23 @@ function insertionSort(array) {
   }
   return array
 }
+
+/*selectionSort Time:O(n^2) Space: O(1) */
+function selectionSort(array) {
+  for (let i = 0; i < array.length; i++) {
+    let idx = i
+    let smallest = array[i]
+    for (let j = i + 1; j < array.length; j++) {
+      let compare = array[j]
+      if (smallest > compare) {
+        smallest = compare
+        idx = j
+      }
+    }
+    let temp = array[i]
+    array[i] = array[idx]
+    array[idx] = temp
+
+  }
+  return array
+}
