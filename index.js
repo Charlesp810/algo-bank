@@ -527,3 +527,18 @@ function runLengthEncoding(string) {
   }
   return result
 }
+
+/*numberOfWaysToMakeChange Space: O(nd) Time: O(n) where n is the target and d is the denoms */
+function numberOfWaysToMakeChange(n, denoms) {
+  const result = new Array(n + 1).fill(0)
+  result[0] = 1
+
+  for (let i = 0; i < denoms.length; i++) {
+    for (let j = 1; j < result.length; j++) {
+      if (denoms[i] <= j) {
+        result[j] += result[j - denoms[i]]
+      }
+    }
+  }
+  return result[n]
+}
