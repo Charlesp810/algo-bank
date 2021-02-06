@@ -506,3 +506,24 @@ function firstDuplicateValue(array) {
   }
   return -1;
 }
+
+/*runLengthEncoding Time: O(n) Space: O(n) */
+function runLengthEncoding(string) {
+  let result = ''
+  let count = 1
+  for (let i = 0; i < string.length; i++) {
+    let j = i + 1
+    while (string[i] === string[j]) {
+      if (count === 9) {
+        result += count + string[i]
+        count = 0
+      }
+      count++
+      j++
+    }
+    result += count + string[i]
+    count = 1
+    i = j - 1
+  }
+  return result
+}
