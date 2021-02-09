@@ -542,3 +542,34 @@ function numberOfWaysToMakeChange(n, denoms) {
   }
   return result[n]
 }
+
+/*threeNumberSort Time: O(n) Space: O(1) */
+function threeNumberSort(array, order) {
+  let firstCount = 0;
+  let secondCount = 0;
+  let thirdCount = 0;
+
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === order[0]) {
+      firstCount++
+    } else if (array[i] === order[1]) {
+      secondCount++
+    } else if (array[i] === order[2]) {
+      thirdCount++
+    }
+  }
+
+  for (let j = 0; j < array.length; j++) {
+    if (firstCount > 0) {
+      array[j] = order[0]
+      firstCount--
+    } else if (secondCount > 0) {
+      array[j] = order[1]
+      secondCount--
+    } else {
+      array[j] = order[2]
+      thirdCount--
+    }
+  }
+  return array
+}
