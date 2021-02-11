@@ -659,3 +659,15 @@ class BST {
     }
   }
 }
+
+/*reverseLinkedList Time: O(n) Space: O(1) */
+function reverseLinkedList(head) {
+  let prevNode = null
+  while (head !== null) {
+    let nextNode = head.next
+    head.next = prevNode
+    prevNode = head
+    head = nextNode
+  }
+  return prevNode
+}
