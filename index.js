@@ -671,3 +671,14 @@ function reverseLinkedList(head) {
   }
   return prevNode
 }
+
+/*validateBst Time: O(n) Space: O(d) where n is the number of nodes in BST and d is the depth */
+function validateBst(tree) {
+  return traverse(tree, -Infinity, Infinity)
+}
+
+function traverse(tree, min, max) {
+  if (tree === null) return true;
+  if (tree.value < min || tree.value >= max) return false;
+  return traverse(tree.left, min, tree.value) && traverse(tree.right, tree.value, max)
+}
