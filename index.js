@@ -761,3 +761,20 @@ function invertBinaryTree(tree) {
   invert(tree)
   return tree
 }
+
+/*findSuccessor Time: O(n) Space: O(n) */
+function findSuccessor(tree, node) {
+  const array = [];
+
+  const traverse = (currNode) => {
+    if (!currNode) return null
+    traverse(currNode.left)
+    array.push(currNode)
+    traverse(currNode.right)
+  };
+  traverse(tree);
+
+  let idx = array.indexOf(node) + 1
+
+  return array[idx] ? array[idx] : null
+}
