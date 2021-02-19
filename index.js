@@ -747,3 +747,17 @@ class BST {
     this.right = null;
   }
 }
+
+/*invertBinaryTree Time: O(n) Space: O(d) where n is the number of nodes and d is the depth */
+function invertBinaryTree(tree) {
+  const invert = (node) => {
+    if (!node) return null
+    let temp = node.left
+    node.left = node.right
+    node.right = temp
+    invert(node.left)
+    invert(node.right)
+  }
+  invert(tree)
+  return tree
+}
